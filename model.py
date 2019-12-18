@@ -1,17 +1,17 @@
 """Define model FCN for Semantic Segmentation"""
 import tensorflow as tf
-tf.compat.v1.disable_eager_execution()
 import numpy as np
 
-from utils import get_variable
-from utils import conv2d
-from utils import add_activation_summary
-from utils import avg_pool_2x2
-from utils import max_pool_2x2
-from utils import weight_variable
-from utils import bias_variable
-from utils import conv2d_transpose_strided
+from tf_utils import get_variable
+from tf_utils import conv2d
+from tf_utils import add_activation_summary
+from tf_utils import avg_pool_2x2
+from tf_utils import max_pool_2x2
+from tf_utils import weight_variable
+from tf_utils import bias_variable
+from tf_utils import conv2d_transpose_strided
 
+tf.compat.v1.disable_eager_execution()
 NUM_CLASSES = 151
 
 

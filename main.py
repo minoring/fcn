@@ -1,23 +1,22 @@
 """Run Fully Convolutional Networks"""
 import datetime
 
-import tensorflow as tf
-tf.compat.v1.disable_eager_execution()
 import numpy as np
 from absl import app
 from absl import flags
+import tensorflow as tf
 
 from flags import define_flags
-from model import vgg_net
 from model import fcn
 from utils import get_model_data
 from utils import process_image
-from utils import add_to_regulariation_and_summary
-from utils import add_gradient_summary
 from utils import save_image
 from dataset import read_files
 from dataset import BatchDataset
+from tf_utils import add_gradient_summary
+from tf_utils import add_to_regulariation_and_summary
 
+tf.compat.v1.disable_eager_execution()
 FLAGS = flags.FLAGS
 
 
@@ -31,7 +30,7 @@ def train(loss, var):
   return optimizer.apply_gradients(grads)
 
 
-def main(argv=None):
+def main(_):
   keep_prob = tf.compat.v1.placeholder(tf.float32, name='keep_prob')
   image = tf.compat.v1.placeholder(
       tf.float32,
